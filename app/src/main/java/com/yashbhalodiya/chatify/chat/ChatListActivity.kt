@@ -26,7 +26,7 @@ class ChatListActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var DBRef: DatabaseReference
-    private lateinit var recylerView : RecyclerView
+    private lateinit var chatRecyclerView : RecyclerView
     private lateinit var adapter: UserAdapter
     private lateinit var userList : ArrayList<User>
 
@@ -45,9 +45,12 @@ class ChatListActivity : AppCompatActivity() {
         DBRef = FirebaseDatabase.getInstance().reference
         userList = ArrayList()
         adapter = UserAdapter(userList, this)
-        recylerView = findViewById(R.id.chatListRecyclerView)
-        recylerView.layoutManager = LinearLayoutManager(this)
-        recylerView.adapter = adapter
+        chatRecyclerView = findViewById(R.id.chatListRecyclerView)
+        chatRecyclerView.layoutManager = LinearLayoutManager(this)
+        chatRecyclerView.adapter = adapter
+
+        chatRecyclerView.layoutManager = LinearLayoutManager(this)
+        chatRecyclerView.adapter = adapter
 
         DBRef.child("users").addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {

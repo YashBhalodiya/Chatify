@@ -7,5 +7,8 @@
     <string name="sign_up_btn_txt">Sign Up</string>
     <string name="log_in_btn_txt">Log In</string>
     <string name="log_out">Log Out</string>
+    <string name="typeMsg_txt">Type a message</string>
+
+    <string name="send_icon">SendIcon</string>
 
 </resources>
