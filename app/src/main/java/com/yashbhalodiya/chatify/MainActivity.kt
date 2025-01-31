@@ -6,7 +6,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.yashbhalodiya.chatify.auth.LogInActivity
+import com.yashbhalodiya.chatify.chat.ChatListActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,8 +24,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val intent = Intent(this, LogInActivity::class.java)
-        startActivity(intent)
-        finish()
+
+        if (FirebaseAuth.getInstance().currentUser == null){
+            val intent = Intent(this, LogInActivity::class.java)
+            startActivity(intent)
+            finish()
+        }else{
+            val intent = Intent(this, ChatListActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

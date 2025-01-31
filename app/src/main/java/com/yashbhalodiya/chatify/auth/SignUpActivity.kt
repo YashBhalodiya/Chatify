@@ -15,7 +15,7 @@ import com.yashbhalodiya.chatify.model.User
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var DBRef : DatabaseReference
+    private lateinit var dBRef : DatabaseReference
     private lateinit var name: EditText
     private lateinit var email: EditText
     private lateinit var password: EditText
@@ -27,7 +27,7 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
         auth = FirebaseAuth.getInstance()
-        DBRef = FirebaseDatabase.getInstance().reference
+        dBRef = FirebaseDatabase.getInstance().reference
         name = findViewById(R.id.name_field)
         email = findViewById(R.id.email_field)
         password = findViewById(R.id.password_field)
@@ -68,6 +68,6 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun addUserToDatabase(name: String, email: String, uid: String) {
-        DBRef.child("users").child(uid).setValue(User(name, email, uid))
+        dBRef.child("users").child(uid).setValue(User(name, email, uid))
     }
 }
